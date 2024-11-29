@@ -37,7 +37,7 @@ values_to_assign = [2*(fit),fit,12*(fit),0];
 
     if j == 1
         x0 = [0 0 0 0 0 0 0 0 0];
-        [t,x] = ode23s(@(t,x)ODE_C3(t,x,p,par,delay_time),tspan,x0);
+        [t,x] = ode23s(@(t,x)TL_TX_TL_ODE(t,x,p,par,delay_time),tspan,x0);
         x = x.*10^9; 
         Simout_RBP = x(1:6000:end,8).*10^p(16);
         tt = ((0:length(With_RBP_0)-1)*10)+70; 
@@ -51,7 +51,7 @@ values_to_assign = [2*(fit),fit,12*(fit),0];
     end
     if j == 2
         x0 = [0 0 0 0 0 0 0 0 0];
-        [t,x] = ode23s(@(t,x)ODE_C3(t,x,p,par,delay_time),tspan,x0);
+        [t,x] = ode23s(@(t,x)TL_TX_TL_ODE(t,x,p,par,delay_time),tspan,x0);
         x = x.*10^9; 
         Simout_RBP = x(1:6000:end,8).*10^p(16);
         tt =((0:length(With_RBP_0)-1)*10)+70; 
@@ -66,7 +66,7 @@ values_to_assign = [2*(fit),fit,12*(fit),0];
 
     if j == 3
         x0 = [0 0 0 0 0 0 0 0 0];
-        [t,x] = ode23s(@(t,x)ODE_C3(t,x,p,par,delay_time),tspan,x0);
+        [t,x] = ode23s(@(t,x)TL_TX_TL_ODE(t,x,p,par,delay_time),tspan,x0);
         x = x.*10^9; 
         Simout_RBP = x(1:6000:end,8).*10^p(16);
         tt = ((0:length(With_RBP_0)-1)*10)+70; 
@@ -82,7 +82,7 @@ values_to_assign = [2*(fit),fit,12*(fit),0];
     if j == 4 
         x0 = [0 0 0 0 0 0 0 0 0];
         new_p(3) = 0; 
-        [t,x] = ode23s(@(t,x)ODE_C3(t,x,new_p,par,delay_time),tspan,x0); %new_p
+        [t,x] = ode23s(@(t,x)TL_TX_TL_ODE(t,x,new_p,par,delay_time),tspan,x0); %new_p
         x = x.*10^9; 
         Simout_RBP = x(1:6000:end,8).*10^new_p(16);
         tt =((0:length(With_RBP_0)-1)*10)+70; 
