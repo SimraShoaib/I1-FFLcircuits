@@ -81,7 +81,7 @@ values_to_assign = [2*(fit),fit,12*(fit),0];
 
     if j == 4 
         x0 = [0 0 0 0 0 0 0 0 0];
-        new_p(3) = 0.17; 
+        new_p(3) = 0; 
         [t,x] = ode23s(@(t,x)ODE_C3(t,x,new_p,par,delay_time),tspan,x0); %new_p
         x = x.*10^9; 
         Simout_RBP = x(1:6000:end,8).*10^new_p(16);
@@ -135,43 +135,3 @@ title('Z_free','HorizontalAlignment','left')
 xlabel("Time (min)")
 set(gca,'FontSize',18)
 set(gca,'FontName','Times New Roman')
-
-
-figure(3)
-p(9) = 12*(fit); 
-% New figure for LVA simulations with different delay times
-delay = [0, 20, 40, 80, 120, 240].*60; % delay times in seconds
-
-hold on
-
-for d = 1:length(delay)
-    delay_time = delay(d); % current delay time
-    x0 = [0 0 0 0 0 0 0 0 0]; % initial conditions
-    
-    % Run the ODE solver with the current delay time
-    [t,x] = ode23s(@(t,x)ODE_C3(t,x,p,par,delay_time),tspan,x0);
-    x = x .* 10^9; % Convert to nM for visualization
-    Simout_RBP = x(1:6000:end, 8) .* 10^p(16); % Get the relevant output
-    
-    % Visualization
-    tt = (0:length(With_RBP_LVA)-1) .* 10; % Time vector for experimental data
-    
-    % Plot the simulation data
-    plot(tt+70, Simout_RBP, '-','DisplayName', sprintf('delay %d min', delay_time./60),'LineWidth',2);
-    
-    % For the experimental data, plot J23110
-    if d == 6
-        plot(tt+70, With_RBP_LVA, '*r', 'DisplayName', 'LVA-exp','LineWidth',1.5); 
-    end
-end
-
-
-% Finalize the new figure
-xlim([0 450])
-ylim([0 15000]) 
-xlabel("Time (minutes)") 
-ylabel("GFP (nM)")
-set(gca, 'FontSize', 18)
-set(gca, 'FontName', 'Times New Roman')
-legend show 
-hold off
