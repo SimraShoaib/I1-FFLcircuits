@@ -21,12 +21,12 @@ dx(2) = par.P_x*p(1) - p(12)*THS*Z - p(6)*THS;
 
 dx(3) =  p(10)*STAR*Py -  p(11)*Py_act; 
 
-dx(4) = p(2)*Py_act - p(13)*RBP*Z - p(7)*RBP + p(14)*Z_rep +  p(8)*Z_rep - p(13)*RBP*Z_act; % Z_act
+dx(4) = p(2)*Py_act - p(13)*RBP*Z - p(7)*RBP + p(14)*Z_rep +  p(8)*Z_rep - p(13)*RBP*Z_act;
 
 dx(5) = p(3)*par.P_z - p(13)*RBP*Z - p(12)*THS*Z - p(8)*Z + p(14)*Z_rep +  p(7)*Z_rep ;
 
 dx(6) = p(12)*THS*Z- p(17)*Z_act - p(13)*RBP*Z_act; % Z_act
 
-dx(7) =  p(13)*RBP*(Z+Z_act) - p(16)*Z_rep - p(14)*Z_rep - p(7)*Z_rep - p(8)*Z_rep; % Z_act
+dx(7) =  p(13)*RBP*(Z+Z_act) - p(16)*Z_rep - p(14)*Z_rep - p(7)*Z_rep - p(8)*Z_rep; 
 
 dx(8) = p(4)*Z_act - p(9)*GFP;
